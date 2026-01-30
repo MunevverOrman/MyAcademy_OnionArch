@@ -1,6 +1,8 @@
-﻿namespace OnionApp.Application.Contracts
+﻿using OnionApp.Domain.Entities;
+
+namespace OnionApp.Application.Contracts
 {
-    public interface IRepositoy<TEntity> where TEntity : class
+    public interface IRepository<TEntity> where TEntity : class
     {
         Task<List<TEntity>> GetAllAsync();
 
@@ -11,7 +13,6 @@
         void Update(TEntity entity);
 
         void Delete(TEntity entity);
-
-
+        void DeleteAsync(Category category);
     }
 }

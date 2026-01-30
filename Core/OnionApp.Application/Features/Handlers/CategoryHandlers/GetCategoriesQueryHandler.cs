@@ -2,20 +2,20 @@
 using MediatR;
 using OnionApp.Application.Base;
 using OnionApp.Application.Contracts;
-using OnionApp.Application.Features.Queries;
+using OnionApp.Application.Features.Queries.CategoryQueries;
 using OnionApp.Application.Features.Results.CategoryResult;
 using OnionApp.Domain.Entities;
 
 namespace OnionApp.Application.Features.Handlers.CategoryHandlers
 {
-    public class GetCategoriesQueryHandler(IRepositoy<Category> _repository) : IRequestHandler<GetCategoriesQuery, BaseResult<List<GetCategoriesQueryResult>>>
+    public class GetCategoriesQueryHandler(IRepository<Category> _repository) : IRequestHandler<GetCategoriesQuery, BaseResult<List<CategoryResults>>>
     {
-        public async Task<BaseResult<List<GetCategoriesQueryResult>>> Handle(GetCategoriesQuery request, CancellationToken cancellationToken)
+        public async Task<BaseResult<List<CategoryResults>>> Handle(GetCategoriesQuery request, CancellationToken cancellationToken)
         {
             var categories =  await _repository.GetAllAsync();
-            var mappedCategories = categories.Adapt<List<GetCategoriesQueryResult>>();
+            var mappedCategories = categories.Adapt<List<CategoryResults>>();
 
-            return BaseResult<List<GetCategoriesQueryResult>>.Success(mappedCategories);
+            return BaseResult<List<CategoryResults>>.Success(mappedCategories);
         }
     }
 }

@@ -8,7 +8,7 @@ using OnionApp.Domain.Entities;
 
 namespace OnionApp.Application.Features.Handlers.CategoryHandlers
 {
-    public class CreateCategoryCommandHandler(IRepositoy<Category> _repositoy,
+    public class CreateCategoryCommandHandler(IRepository<Category> _repositoy,
                                                 IUnitOfWork _unitOfWork,
                                                 IValidator<Category> _validator) :
                                                 IRequestHandler<CreateCategoryCommand, 

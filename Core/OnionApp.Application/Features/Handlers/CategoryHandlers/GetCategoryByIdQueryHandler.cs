@@ -8,7 +8,7 @@ using OnionApp.Domain.Entities;
 
 namespace OnionApp.Application.Features.Handlers.CategoryHandlers
 {
-    public class GetCategoryByIdQueryHandler(IRepositoy<Category> _repositoy) : IRequestHandler<GetCategoryByIdQuery, BaseResult<GetCategoryByIdQueryResult>>
+    public class GetCategoryByIdQueryHandler(IRepository<Category> _repositoy) : IRequestHandler<GetCategoryByIdQuery, BaseResult<GetCategoryByIdQueryResult>>
     {
         public async Task<BaseResult<GetCategoryByIdQueryResult>> Handle(GetCategoryByIdQuery request, CancellationToken cancellationToken)
         {

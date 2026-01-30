@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnionApp.Application.Contracts;
+using OnionApp.Domain.Entities;
 using OnionApp.Persistence.Context;
 
 namespace OnionApp.Persistence.Concrete
 {
-    public class GenericRepository<TEntity>(AppDbContext _context) : IRepositoy<TEntity> where TEntity : class
+    public class GenericRepository<TEntity>(AppDbContext _context) : IRepository<TEntity> where TEntity : class
     {
         public async Task CreateAsync(TEntity entity)
         {
@@ -14,6 +15,11 @@ namespace OnionApp.Persistence.Concrete
         public void Delete(TEntity entity)
         {
            _context.Remove(entity);
+        }
+
+        public void DeleteAsync(Category category)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<List<TEntity>> GetAllAsync()

@@ -13,7 +13,7 @@ namespace OnionApp.API.Controllers
     public class CategoriesController(IMediator _mediator) : ControllerBase
     {
         [HttpGet]
-        public async Task<ActionResult<BaseResult<GetCategoriesQueryResult>>> GetAll()
+        public async Task<ActionResult<BaseResult<CategoryResults>>> GetAll()
         {
             var result = await _mediator.Send(new GetCategoriesQuery());
             return result.IsSuccessful ? Ok(result) : BadRequest(result);
@@ -31,6 +31,19 @@ namespace OnionApp.API.Controllers
         public async Task<ActionResult<BaseResult<GetCategoryByIdQueryResult>>> GetById(int id)
         {
             var result = await _mediator.Send(new GetCategoryByIdQuery(id));
+            return result.IsSuccessful ? Ok(result) : BadRequest(result);
+        }
+        [HttpPut]
+        public async Task<IActionResult> Update(UpdateCategoryCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return result.IsSuccessful ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var result = await _mediator.Send(new RemoveCategoryCommand(id));
             return result.IsSuccessful ? Ok(result) : BadRequest(result);
         }
 

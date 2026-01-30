@@ -20,7 +20,7 @@ namespace OnionApp.Persistence.Extensions
             });
 
 
-            services.AddScoped(typeof(IRepositoy<>), typeof(GenericRepository<>));
+            services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
